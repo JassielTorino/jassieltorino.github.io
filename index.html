@@ -11,10 +11,10 @@
   <style>
     :root {
       --primary-color: #ff4081;
-      --bg-color: #f5f5f5; /* Fondo casi blanco */
+      --bg-color: #f5f5f5;
       --text-color: #333;
       --card-bg: rgba(255, 255, 255, 0.9);
-      --dot-overlay: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px); /* Puntos negros */
+      --dot-overlay: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
     }
 
     body {
@@ -26,7 +26,6 @@
       position: relative;
     }
 
-    /* === Textura de puntos en el fondo === */
     body::before {
       content: "";
       position: fixed;
@@ -40,7 +39,6 @@
       z-index: 0;
     }
 
-    /* Contenido principal encima del fondo */
     header, main, footer {
       position: relative;
       z-index: 1;
@@ -50,7 +48,6 @@
       text-align: center;
       padding: 80px 20px 40px;
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      position: relative;
     }
 
     header::after {
@@ -64,6 +61,8 @@
     header > div {
       position: relative;
       z-index: 2;
+      max-width: 700px;
+      margin: auto;
     }
 
     h1 {
@@ -99,8 +98,6 @@
       max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
-      position: relative;
-      z-index: 1;
     }
 
     section {
@@ -143,7 +140,7 @@
       text-align: center;
       padding: 30px;
       font-size: 0.9rem;
-      color: #555;
+      color: #aaa;
       border-top: 1px solid rgba(0,0,0,0.1);
     }
 
@@ -169,55 +166,17 @@
       animation-play-state: paused;
     }
 
-    /* === Animación de wobble + zoom + brillo === */
     @keyframes pulseShadow {
-      0% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
-      50% {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
-      }
-      100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
+      0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6)); }
+      100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); }
     }
 
     @keyframes wobbleZoom {
-      0% {
-        transform: scale(1) rotate(0deg);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
-      15% {
-        transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
-      }
-      30% {
-        transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
-      }
-      45% {
-        transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
-      }
-      60% {
-        transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
-      }
-      75% {
-        transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
-      }
-      90% {
-        transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
-      }
-      100% {
-        transform: scale(1) rotate(0deg);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
+      0% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); }
+      15% { transform: scale(1.2) rotate(-3deg); filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8)); }
+      30% { transform: scale(1.2) rotate(3deg); filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6)); }
+      100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); }
     }
 
     .floating-social a:hover {
@@ -272,23 +231,22 @@
   <main>
     <section id="about">
       <h2>Acerca de mí</h2>
-      <p>Escribe aquí una breve descripción sobre quién eres, qué tipo de libros escribes y por qué son únicos. Este espacio es ideal para conectar con tus lectores y generar interés.</p>
+      <p>Soy Jassiel Torino, escritor apasionado por las historias que tocan el corazón, desafían la mente y dejan huella. Mis libros exploran mundos donde lo cotidiano se vuelve extraordinario y cada palabra tiene intención. Este es mi espacio digital para compartir mis proyectos, inspirarte y conectar contigo como lector o colaborador.</p>
     </section>
 
     <section id="libros">
       <h2>Mis Libros</h2>
       <div class="books">
-        <!-- Primer libro -->
+        <!-- Ejemplo de libro -->
         <div class="book">
-          <a href="https://www.amazon.com/tu-libro-1 " target="_blank">
-            <img src="https://via.placeholder.com/300x450.png?text=Libro+1" alt="Portada del libro 1">
+          <a href="https://www.amazon.com/tu-libro-en-amazon " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+1" alt="Portada del libro 1">
           </a>
         </div>
 
-        <!-- Segundo libro -->
         <div class="book">
-          <a href=" https://www.amazon.com/tu-libro-2 " target="_blank">
-            <img src="https://via.placeholder.com/300x450.png?text=Libro+2" alt="Portada del libro 2">
+          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+2" alt="Portada del libro 2">
           </a>
         </div>
       </div>
@@ -296,7 +254,14 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Para colaboraciones o mensajes, escríbeme a <a href="mailto:jassieltorino@gmail.com">jassieltorino@email.com</a> o sígueme en mis redes sociales.</p>
+      <p>Para colaboraciones, entrevistas o asuntos editoriales, escríbeme a <a href="mailto:jassieltorino@gmail.com">jassieltorino@gmail.com</a>. También puedes seguirme en mis redes sociales:</p>
+      <ul>
+        <li><a href=" https://www.instagram.com/jassieltorino/ ">Instagram</a></li>
+        <li><a href="https://www.facebook.com/jassieltorino ">Facebook</a></li>
+        <li><a href="https://www.youtube.com/ @JassielTorino">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/ @jassieltorino">TikTok</a></li>
+        <li><a href="https://twitter.com/JassielTorino ">X (Twitter)</a></li>
+      </ul>
     </section>
   </main>
 
