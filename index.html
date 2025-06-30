@@ -140,11 +140,31 @@
       font-size: 1.5rem;
       margin: 10px 0;
       transition: color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+      animation-play-state: paused; /* Inicia pausada */
     }
 
     .floating-social a:hover {
       color: var(--primary-color);
       transform: scale(1.2) rotate(5deg);
+    }
+
+    /* === Animación de pulso === */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* === Clase activa cuando se hace scroll === */
+    .floating-social a.animate {
+      animation-play-state: running;
     }
   </style>
 </head>
@@ -164,7 +184,7 @@
   </header>
 
   <!-- Barra fija de redes sociales -->
-  <div class="floating-social">
+  <div class="floating-social" id="floatingSocial">
     <!-- Instagram -->
     <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
       <i class="fab fa-instagram"></i>
@@ -226,6 +246,21 @@
   <footer>
     © 2025 Jassiel Torino. Todos los derechos reservados.
   </footer>
+
+  <script>
+    // Activar animación al hacer scroll
+    const socialLinks = document.querySelectorAll('.floating-social a');
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 100) {
+        socialLinks.forEach(link => link.classList.add('animate'));
+      } else {
+        socialLinks.forEach(link => link.classList.remove('animate'));
+      }
+    });
+  </script>
 
 </body>
 </html>
