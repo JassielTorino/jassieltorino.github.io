@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jassiel Torino - Escritor</title>
 
-  <!-- Font Awesome CDN (funcionando) -->
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css " integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -73,23 +73,6 @@
       color: var(--primary-color);
     }
 
-    .social-icons {
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      color: white;
-      font-size: 1.8rem;
-      margin: 0 12px;
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      color: var(--primary-color);
-      transform: scale(1.2) rotate(5deg);
-    }
-
     main {
       max-width: 1000px;
       margin: 40px auto;
@@ -139,6 +122,30 @@
       color: #aaa;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
+
+    /* === Barra fija de redes sociales === */
+    .floating-social {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .floating-social a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .floating-social a:hover {
+      color: var(--primary-color);
+      transform: scale(1.2) rotate(5deg);
+    }
   </style>
 </head>
 <body>
@@ -153,31 +160,32 @@
         <a href="#libros">Mis Libros</a>
         <a href="#contacto">Contacto</a>
       </nav>
-
-      <div class="social-icons">
-        <!-- Instagram -->
-        <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/@JassielTorino" target="_blank" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <!-- TikTok -->
-        <a href="https://www.tiktok.com/@jassieltorino" target="_blank" title="TikTok">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <!-- X (Twitter) -->
-        <a href="https://twitter.com/JassielTorino " target="_blank" title="X">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-      </div>
     </div>
   </header>
+
+  <!-- Barra fija de redes sociales -->
+  <div class="floating-social">
+    <!-- Instagram -->
+    <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/ @JassielTorino" target="_blank" title="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/ @jassieltorino" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <!-- X (Twitter) -->
+    <a href="https://twitter.com/JassielTorino " target="_blank" title="X">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+  </div>
 
   <main>
     <section id="about">
