@@ -141,10 +141,26 @@
       margin: 10px 0;
       transition: all 0.3s ease;
       display: inline-block;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      animation: pulseShadow 2s infinite;
+      animation-play-state: paused;
     }
 
     /* === Animación de wobble + zoom + brillo === */
+    @keyframes pulseShadow {
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      }
+      50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
+      }
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      }
+    }
+
     @keyframes wobbleZoom {
       0% {
         transform: scale(1) rotate(0deg);
@@ -152,27 +168,27 @@
       }
       15% {
         transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
       }
       30% {
         transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
       }
       45% {
         transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
       }
       60% {
         transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
       }
       75% {
         transform: scale(1.2) rotate(-3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
       }
       90% {
         transform: scale(1.2) rotate(3deg);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
       }
       100% {
         transform: scale(1) rotate(0deg);
@@ -183,6 +199,10 @@
     .floating-social a:hover {
       animation: wobbleZoom 0.8s ease-in-out forwards;
       color: var(--primary-color);
+    }
+
+    .floating-social a.animate {
+      animation-play-state: running;
     }
   </style>
 </head>
@@ -202,7 +222,7 @@
   </header>
 
   <!-- Barra fija de redes sociales -->
-  <div class="floating-social">
+  <div class="floating-social" id="floatingSocial">
     <!-- Instagram -->
     <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
       <i class="fab fa-instagram"></i>
@@ -259,6 +279,21 @@
   <footer>
     © 2025 Jassiel Torino. Todos los derechos reservados.
   </footer>
+
+  <script>
+    // Activar animación al hacer scroll
+    const socialLinks = document.querySelectorAll('.floating-social a');
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 100) {
+        socialLinks.forEach(link => link.classList.add('animate'));
+      } else {
+        socialLinks.forEach(link => link.classList.remove('animate'));
+      }
+    });
+  </script>
 
 </body>
 </html>
