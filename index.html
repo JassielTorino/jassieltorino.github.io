@@ -140,21 +140,34 @@
       font-size: 1.5rem;
       margin: 10px 0;
       transition: color 0.3s ease, transform 0.3s ease;
-      animation: pulse 2s infinite;
+      animation: rotateAndPulse 2s infinite;
       animation-play-state: paused;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
     }
 
     .floating-social a:hover {
       color: var(--primary-color);
       transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    /* === Animación de giro + sombra pulsante === */
+    @keyframes rotateAndPulse {
+      0% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      }
+      50% {
+        transform: rotate(3deg) scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
+      }
+      100% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      }
     }
 
+    /* === Clase activa cuando se hace scroll === */
     .floating-social a.animate {
       animation-play-state: running;
     }
@@ -177,11 +190,26 @@
 
   <!-- Barra fija de redes sociales -->
   <div class="floating-social" id="floatingSocial">
-    <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.youtube.com/ @JassielTorino" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/ @jassieltorino" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://twitter.com/JassielTorino " target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+    <!-- Instagram -->
+    <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/ @JassielTorino" target="_blank" title="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/ @jassieltorino" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <!-- X (Twitter) -->
+    <a href="https://twitter.com/JassielTorino " target="_blank" title="X">
+      <i class="fab fa-x-twitter"></i>
+    </a>
   </div>
 
   <main>
@@ -193,7 +221,6 @@
     <section id="libros">
       <h2>Mis Libros</h2>
       <div class="books">
-
         <!-- Primer libro -->
         <div class="book">
           <a href="https://www.amazon.com/tu-libro-1 " target="_blank">
@@ -207,7 +234,6 @@
             <img src="https://via.placeholder.com/300x450.png?text=Libro+2" alt="Portada del libro 2">
           </a>
         </div>
-
       </div>
     </section>
 
