@@ -100,7 +100,7 @@
       background: var(--card-bg);
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
       transition: transform 0.3s ease;
     }
 
@@ -139,37 +139,25 @@
       color: white;
       font-size: 1.5rem;
       margin: 10px 0;
-      transition: color 0.3s ease, transform 0.3s ease;
-      animation: rotateAndPulse 2s infinite;
-      animation-play-state: paused;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    /* === Animación de wobble + zoom === */
+    @keyframes wobbleZoom {
+      0% { transform: scale(1) rotate(0deg); }
+      15% { transform: scale(1.2) rotate(-3deg); }
+      30% { transform: scale(1.2) rotate(3deg); }
+      45% { transform: scale(1.2) rotate(-3deg); }
+      60% { transform: scale(1.2) rotate(3deg); }
+      75% { transform: scale(1.2) rotate(-3deg); }
+      90% { transform: scale(1.2) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); }
     }
 
     .floating-social a:hover {
+      animation: wobbleZoom 0.8s ease-in-out forwards;
       color: var(--primary-color);
-      transform: scale(1.2) rotate(5deg);
-      filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
-    }
-
-    /* === Animación de giro + sombra pulsante === */
-    @keyframes rotateAndPulse {
-      0% {
-        transform: rotate(0deg) scale(1);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
-      50% {
-        transform: rotate(3deg) scale(1.1);
-        filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.6));
-      }
-      100% {
-        transform: rotate(0deg) scale(1);
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-      }
-    }
-
-    /* === Clase activa cuando se hace scroll === */
-    .floating-social a.animate {
-      animation-play-state: running;
     }
   </style>
 </head>
@@ -189,7 +177,7 @@
   </header>
 
   <!-- Barra fija de redes sociales -->
-  <div class="floating-social" id="floatingSocial">
+  <div class="floating-social">
     <!-- Instagram -->
     <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
       <i class="fab fa-instagram"></i>
@@ -246,21 +234,6 @@
   <footer>
     © 2025 Jassiel Torino. Todos los derechos reservados.
   </footer>
-
-  <script>
-    // Activar animación al hacer scroll
-    const socialLinks = document.querySelectorAll('.floating-social a');
-
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > 100) {
-        socialLinks.forEach(link => link.classList.add('animate'));
-      } else {
-        socialLinks.forEach(link => link.classList.remove('animate'));
-      }
-    });
-  </script>
 
 </body>
 </html>
