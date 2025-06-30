@@ -2,30 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jassiel Torino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tu Nombre - Escritor</title>
 
   <!-- Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/ @fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-color: #ff4081;
+      --bg-color: #1e1f26;
+      --text-color: #fff;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1e1f26, #2c2f4a, #1c1e29);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 80px 20px 40px;
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      color: white;
       position: relative;
     }
 
@@ -43,133 +45,97 @@
     }
 
     h1 {
-      font-size: 4rem;
+      font-size: 3rem;
       margin: 0;
-      letter-spacing: 4px;
-      text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+      color: white;
     }
 
     p.tagline {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #ffd700;
       margin-top: 10px;
-      font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      font-weight: 500;
     }
 
-    .nav {
-      margin-top: 30px;
+    nav {
+      margin-top: 20px;
     }
 
-    .nav a {
+    nav a {
+      color: white;
       text-decoration: none;
-      color: #fff;
       margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s ease, transform 0.3s ease;
-      font-size: 1.1rem;
+      transition: color 0.3s ease;
     }
 
-    .nav a:hover {
-      color: #ff4081;
-      transform: scale(1.1);
+    nav a:hover {
+      color: var(--primary-color);
     }
 
     .social-icons {
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .social-icons a {
-      color: #fff;
-      font-size: 2rem;
-      margin: 0 12px;
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: #ff4081;
-      transform: rotate(10deg) scale(1.2);
+      color: var(--primary-color);
     }
 
     main {
-      flex: 1;
-      max-width: 800px;
-      margin: -40px auto 40px;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
     h2 {
-      color: #ff4081;
-      margin-bottom: 20px;
-      font-size: 2.2rem;
+      color: var(--primary-color);
       border-bottom: 2px solid rgba(255, 64, 129, 0.3);
       padding-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #ddd;
+    .books {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
     }
 
-    a {
-      color: #ff4081;
-      text-decoration: none;
-      transition: color 0.3s;
+    .book {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
 
-    a:hover {
-      color: #e73370;
+    .book img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    .book:hover {
+      transform: translateY(-5px);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      font-size: 0.9em;
+      font-size: 0.9rem;
       color: #aaa;
       border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
-      
-      .nav a {
-        margin: 0 10px;
-        font-size: 1rem;
-      }
-      
-      main {
-        padding: 25px;
-        margin: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      header {
-        padding: 100px 20px 40px;
-      }
-      
-      .nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
     }
   </style>
 </head>
@@ -177,59 +143,63 @@
 
   <header>
     <div>
-      <h1>Jassiel Torino</h1>
-      <p class="tagline">Vive | Inspira | Transforma</p>
+      <h1>Tu Nombre Aquí</h1>
+      <p class="tagline">Escritor | Inspirador | Creador</p>
 
-      <nav class="nav">
+      <nav>
         <a href="#about">Acerca de</a>
-        <a href="#proyectos">Proyectos</a>
+        <a href="#libros">Mis Libros</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
       <div class="social-icons">
-        <!-- Instagram -->
-        <a href="#" target="_blank" title="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <!-- Facebook -->
-        <a href="#" target="_blank" title="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <!-- YouTube -->
-        <a href="#" target="_blank" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <!-- TikTok -->
-        <a href="#" target="_blank" title="TikTok">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <!-- X (Twitter) -->
-        <a href="#" target="_blank" title="X">
-          <i class="fab fa-x-twitter"></i>
-        </a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
       </div>
     </div>
   </header>
 
   <main>
     <section id="about">
-      <h2>¿Quién es Jassiel Torino?</h2>
-      <p>Jassiel Torino es una fuerza creativa que trasciende lo convencional. Este espacio digital es donde se une la pasión, la autenticidad y la innovación para compartir historias que impactan y transforman.</p>
+      <h2>Acerca de mí</h2>
+      <p>Escribe aquí una breve descripción sobre quién eres, qué tipo de libros escribes y por qué son únicos. Este espacio es ideal para conectar con tus lectores y generar interés.</p>
     </section>
 
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <p>Explora aquí una selección de colaboraciones, ideas y contenidos únicos creados bajo la visión disruptiva de Jassiel Torino. ¡Próximamente!</p>
+    <section id="libros">
+      <h2>Mis Libros</h2>
+      <div class="books">
+        <!-- Ejemplo de libro -->
+        <div class="book">
+          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+1" alt="Portada del libro 1">
+          </a>
+        </div>
+
+        <div class="book">
+          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+2" alt="Portada del libro 2">
+          </a>
+        </div>
+
+        <div class="book">
+          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+3" alt="Portada del libro 3">
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Para colaboraciones o mensajes, escríbeme a <a href="mailto:jassieltorino@email.com">jassieltorino@email.com</a> o sígueme en mis redes sociales.</p>
+      <p>Para colaboraciones o mensajes, escríbeme a <a href="mailto:tuemail@email.com">tuemail@email.com</a> o sígueme en mis redes sociales.</p>
     </section>
   </main>
 
   <footer>
-    © 2025 Jassiel Torino. Todos los derechos reservados.
+    © 2025 Tu Nombre. Todos los derechos reservados.
   </footer>
 
 </body>
