@@ -141,7 +141,7 @@
       margin: 10px 0;
       transition: color 0.3s ease, transform 0.3s ease;
       animation: pulse 2s infinite;
-      animation-play-state: paused; /* Inicia pausada */
+      animation-play-state: paused;
     }
 
     .floating-social a:hover {
@@ -149,20 +149,12 @@
       transform: scale(1.2) rotate(5deg);
     }
 
-    /* === Animación de pulso === */
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
 
-    /* === Clase activa cuando se hace scroll === */
     .floating-social a.animate {
       animation-play-state: running;
     }
@@ -185,26 +177,11 @@
 
   <!-- Barra fija de redes sociales -->
   <div class="floating-social" id="floatingSocial">
-    <!-- Instagram -->
-    <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/ @JassielTorino" target="_blank" title="YouTube">
-      <i class="fab fa-youtube"></i>
-    </a>
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/ @jassieltorino" target="_blank" title="TikTok">
-      <i class="fab fa-tiktok"></i>
-    </a>
-    <!-- X (Twitter) -->
-    <a href="https://twitter.com/JassielTorino " target="_blank" title="X">
-      <i class="fab fa-x-twitter"></i>
-    </a>
+    <a href=" https://www.instagram.com/jassieltorino/ " target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/jassieltorino " target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.youtube.com/ @JassielTorino" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/ @jassieltorino" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://twitter.com/JassielTorino " target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
   </div>
 
   <main>
@@ -216,24 +193,21 @@
     <section id="libros">
       <h2>Mis Libros</h2>
       <div class="books">
-        <!-- Ejemplo de libro -->
+
+        <!-- Primer libro -->
         <div class="book">
-          <a href="https://www.amazon.com/tu-libro-en-amazon " target="_blank">
-            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+1" alt="Portada del libro 1">
+          <a href="https://www.amazon.com/tu-libro-1 " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Libro+1" alt="Portada del libro 1">
           </a>
         </div>
 
+        <!-- Segundo libro -->
         <div class="book">
-          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
-            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+2" alt="Portada del libro 2">
+          <a href=" https://www.amazon.com/tu-libro-2 " target="_blank">
+            <img src="https://via.placeholder.com/300x450.png?text=Libro+2" alt="Portada del libro 2">
           </a>
         </div>
 
-        <div class="book">
-          <a href=" https://www.amazon.com/tu-libro-en-amazon " target="_blank">
-            <img src="https://via.placeholder.com/300x450.png?text=Portada+Libro+3" alt="Portada del libro 3">
-          </a>
-        </div>
       </div>
     </section>
 
