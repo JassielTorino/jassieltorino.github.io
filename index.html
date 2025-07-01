@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jassiel Torino - Escritor</title>
+  <title>Jassiel Torino</title>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,8 +22,6 @@
       --glass-bg: rgba(255, 255, 255, 0.2);
       --glass-border: rgba(255, 255, 255, 0.3);
       --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      --aurora-color-1: rgba(180, 180, 180, 0.3);
-      --aurora-color-2: rgba(200, 200, 200, 0.2);
       --border-gray: #888888;
     }
 
@@ -38,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* Barra superior de redes sociales */
+    /* Barra superior de redes sociales simplificada */
     .social-top {
       position: fixed;
       top: 20px;
@@ -58,7 +56,7 @@
     }
 
     .social-top a {
-      color: #444;
+      color: #666;
       font-size: 1.2rem;
       width: 36px;
       height: 36px;
@@ -66,58 +64,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.4s ease;
-      animation: pulseShadow 2s infinite;
+      transition: all 0.3s ease;
       background: rgba(255,255,255,0.9);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .social-top a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: 0.5s;
-    }
-
-    .social-top a:hover::before {
-      left: 100%;
-    }
-
-    @keyframes pulseShadow {
-      0% { transform: scale(1); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-      50% { transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-      100% { transform: scale(1); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-    }
-
-    @keyframes wobbleZoom {
-      0% { transform: scale(1) rotate(0deg); }
-      15% { transform: scale(1.2) rotate(-5deg); }
-      30% { transform: scale(1.2) rotate(5deg); }
-      100% { transform: scale(1) rotate(0deg); }
     }
 
     .social-top a:hover {
-      animation: wobbleZoom 0.8s ease-in-out forwards;
       color: #000;
-      background: rgba(255,255,255,1);
+      transform: scale(1.1);
     }
 
-    /* Cabecera con fondo de arroz - Ajustada más arriba */
+    /* Cabecera centrada */
     .hero-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: flex-start; /* Cambiado para centrar más arriba */
+      justify-content: center;
       position: relative;
-      padding: 80px 20px 120px; /* Más padding arriba */
+      padding: 20px;
       text-align: center;
-      scroll-margin-top: 100px;
     }
 
     .hero-content {
@@ -130,10 +94,9 @@
       backdrop-filter: blur(5px);
       border-radius: 5px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      margin-top: -50px; /* Levanta el recuadro */
     }
 
-    /* Efecto de letras - Versión mejorada */
+    /* Nombre con subrayado */
     .name-container {
       position: relative;
       margin-bottom: 40px;
@@ -153,22 +116,48 @@
     .name-row {
       display: flex;
       justify-content: center;
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .name-row::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-color);
     }
 
     .name-letter {
       font-size: 5rem;
       margin: 0 5px;
       position: relative;
-      transition: transform 0.3s ease;
-      cursor: default;
+      line-height: 1;
     }
 
-    .name-letter:hover {
-      transform: translateY(-5px);
+    /* Iconos en gris */
+    .tagline-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
     }
 
-    /* Letras flotantes por toda la página - Más visibles e inmediatas */
-    .random-letters {
+    .tagline-icon {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+
+    .tagline-icon:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Partículas simplificadas */
+    .particles {
       position: fixed;
       top: 0;
       left: 0;
@@ -176,34 +165,22 @@
       height: 100%;
       pointer-events: none;
       z-index: -1;
-      overflow: hidden;
     }
 
-    .random-letter {
+    .particle {
       position: absolute;
-      font-size: 1.8rem;
-      font-family: 'Playfair Display', serif;
-      color: rgba(0,0,0,0.3);
-      animation: float 20s infinite ease-in-out;
-      opacity: 0.5;
-      will-change: transform, opacity;
-      font-weight: 500;
-      animation-delay: 0s !important; /* Sin retraso */
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.2);
+      animation: float 15s infinite linear;
     }
 
     @keyframes float {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-      50% { opacity: 0.8; }
-      100% { transform: translate(var(--end-x), var(--end-y)) rotate(360deg); opacity: 0.3; }
-    }
-
-    .tagline {
-      font-size: 1.6rem;
-      color: #555;
-      margin-top: 20px;
-      font-weight: 400;
-      font-style: italic;
-      letter-spacing: 1px;
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
     }
 
     main {
@@ -213,54 +190,16 @@
       position: relative;
     }
 
-    /* Secciones con textura marmoleada */
+    /* Secciones */
     section {
       margin-bottom: 80px;
       padding: 50px;
       border-radius: 5px;
-      background: var(--section-bg) url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1), 
-                  inset 0 0 30px rgba(0,0,0,0.05);
-      transition: all 0.5s ease;
+      background: var(--section-bg);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* Efecto aurora boreal */
-    section::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        transparent,
-        transparent,
-        transparent,
-        var(--aurora-color-1),
-        var(--aurora-color-2),
-        transparent,
-        transparent
-      );
-      transform: rotate(20deg);
-      animation: aurora 30s infinite linear;
-      z-index: 0;
-      opacity: 0.5;
-      mix-blend-mode: overlay;
-    }
-
-    @keyframes aurora {
-      0% { transform: translateX(-100%) rotate(20deg); }
-      50% { transform: translateX(0%) rotate(20deg); opacity: 0.7; }
-      100% { transform: translateX(100%) rotate(20deg); }
-    }
-
-    section:hover {
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
-                  inset 0 0 30px rgba(0,0,0,0.1);
     }
 
     /* Sección de Poema */
@@ -281,8 +220,8 @@
 
     .verso {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
       display: block;
       margin-bottom: 1.8rem;
     }
@@ -292,25 +231,7 @@
       transform: translateY(0);
     }
 
-    .poema::before, .poema::after {
-      content: '"';
-      font-size: 4rem;
-      color: var(--primary-color);
-      opacity: 0.2;
-      position: absolute;
-    }
-
-    .poema::before {
-      top: -30px;
-      left: -40px;
-    }
-
-    .poema::after {
-      bottom: -50px;
-      right: -40px;
-    }
-
-    /* Sección de Libros - Con bordes grises */
+    /* Sección de Libros simplificada */
     .books {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -320,72 +241,34 @@
     }
 
     .book-wrapper {
-      background: var(--book-bg) url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
+      background: var(--book-bg);
       padding: 30px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1), 
-                  inset 0 0 20px rgba(0,0,0,0.05);
-      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
       width: 100%;
       max-width: 320px;
       text-align: center;
       position: relative;
       border-radius: 5px;
-      overflow: hidden;
-      border: 1px solid var(--border-gray);
-    }
-
-    .book-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, 
-                    transparent, 
-                    transparent, 
-                    var(--aurora-color-1), 
-                    transparent, 
-                    transparent);
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    .book-wrapper:hover::before {
-      opacity: 0.3;
-      animation: auroraFlow 15s linear infinite;
-    }
-
-    @keyframes auroraFlow {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
     .book-wrapper:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2), 
-                  inset 0 0 20px rgba(0,0,0,0.1);
-      border-color: var(--primary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
     .book-wrapper img {
       width: 100%;
       height: auto;
       display: block;
-      transition: all 0.4s ease;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       filter: sepia(20%);
       border-radius: 3px;
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(0,0,0,0.1);
     }
 
     .book-wrapper:hover img {
-      transform: scale(1.05);
-      filter: sepia(0%) brightness(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      filter: sepia(0%);
     }
 
     .book-title {
@@ -393,26 +276,7 @@
       font-size: 1.3rem;
       font-weight: 600;
       color: var(--primary-color);
-      transition: all 0.3s ease;
       font-family: 'Playfair Display', serif;
-      position: relative;
-      z-index: 1;
-    }
-
-    .book-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #888, #ccc);
-      transition: width 0.3s ease;
-    }
-
-    .book-wrapper:hover .book-title::after {
-      width: 80%;
     }
 
     .view-button {
@@ -428,93 +292,11 @@
       transition: all 0.3s ease;
       border: 1px solid var(--border-gray);
       font-family: 'Cormorant Garamond', serif;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .view-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, #888, #ccc);
-      transition: width 0.3s ease;
-      z-index: -1;
     }
 
     .view-button:hover {
+      background: var(--primary-color);
       color: white;
-      border-color: var(--primary-color);
-    }
-
-    .view-button:hover::before {
-      width: 100%;
-    }
-
-    /* Visualizador de partículas electrificantes */
-    .particle-viewer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .electric-particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 5px 1px white;
-      animation: electric-pulse 2s infinite ease-in-out;
-      opacity: 0;
-    }
-
-    @keyframes electric-pulse {
-      0% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 0.8; transform: scale(1.5); box-shadow: 0 0 10px 2px white; }
-      100% { opacity: 0; transform: scale(0.5); }
-    }
-
-    /* Red neuronal/micelio */
-    .neural-network {
-      width: 100%;
-      height: 200px;
-      position: relative;
-      margin: 80px 0;
-    }
-
-    .neural-line {
-      position: absolute;
-      background: linear-gradient(to right, transparent, #888, transparent);
-      height: 1px;
-      transform-origin: left center;
-      animation: neural-grow 3s forwards;
-    }
-
-    .neural-node {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #888;
-      animation: neural-pulse 2s infinite ease-in-out;
-    }
-
-    @keyframes neural-grow {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-
-    @keyframes neural-pulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.3); opacity: 1; }
     }
 
     footer {
@@ -523,34 +305,17 @@
       font-size: 1rem;
       color: #555;
       border-top: 1px solid rgba(0,0,0,0.1);
-      background: rgba(255,255,255,0.9) url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
-      position: relative;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #888, #ccc);
-      opacity: 0.7;
+      background: rgba(255,255,255,0.9);
     }
 
     /* Media Queries para móviles */
     @media (max-width: 768px) {
       .hero-content {
         padding: 40px 20px;
-        margin-top: -30px;
       }
       
       .name-letter {
         font-size: 3.5rem;
-      }
-      
-      .tagline {
-        font-size: 1.3rem;
       }
       
       section {
@@ -561,48 +326,20 @@
         font-size: 1.2rem;
         line-height: 2.2;
       }
-      
-      .poema::before, .poema::after {
-        font-size: 3rem;
-      }
 
       .social-top {
         padding: 10px 20px;
         gap: 12px;
       }
 
-      .social-top a {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-      }
-
-      .random-letter {
-        font-size: 1.4rem;
-        opacity: 0.4;
-      }
-
-      .neural-network {
-        height: 150px;
-        margin: 50px 0;
+      .tagline-icons {
+        gap: 20px;
       }
     }
 
     @media (max-width: 480px) {
-      .hero-section {
-        padding: 60px 20px 100px;
-      }
-      
-      .hero-content {
-        margin-top: -20px;
-      }
-      
       .name-letter {
         font-size: 2.5rem;
-      }
-      
-      .tagline {
-        font-size: 1.1rem;
       }
       
       .books {
@@ -619,9 +356,12 @@
         padding: 8px 15px;
       }
 
-      .neural-network {
-        height: 120px;
-        margin: 30px 0;
+      .tagline-icons {
+        gap: 15px;
+      }
+
+      .tagline-icon {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -630,36 +370,30 @@
 <body>
   <!-- Barra superior de redes sociales -->
   <div class="social-top">
-    <!-- Instagram -->
     <a href="https://www.instagram.com/jassieltorino/" target="_blank" title="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-    <!-- Facebook -->
     <a href="https://www.facebook.com/jassieltorino" target="_blank" title="Facebook">
       <i class="fab fa-facebook-f"></i>
     </a>
-    <!-- YouTube -->
     <a href="https://www.youtube.com/@JassielTorino" target="_blank" title="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@jassieltorino" target="_blank" title="TikTok">
       <i class="fab fa-tiktok"></i>
     </a>
-    <!-- X (Twitter) -->
     <a href="https://twitter.com/JassielTorino" target="_blank" title="X">
       <i class="fab fa-x-twitter"></i>
     </a>
   </div>
 
-  <!-- Visualizador de partículas electrificantes -->
-  <div class="particle-viewer" id="particleViewer"></div>
+  <!-- Partículas -->
+  <div class="particles" id="particles"></div>
 
   <!-- Sección Hero con nombre -->
   <section class="hero-section" id="inicio">
     <div class="hero-content">
       <div class="name-container">
-        <!-- Letras del nombre Jassiel Torino - Versión mejorada -->
         <div class="name-letters">
           <div class="name-row">
             <span class="name-letter">J</span>
@@ -679,12 +413,20 @@
             <span class="name-letter">o</span>
           </div>
         </div>
-        
-        <!-- Letras aleatorias alrededor -->
-        <div class="random-letters" id="randomLetters"></div>
       </div>
       
-      <p class="tagline">Escritor | Creador | Pensador</p>
+      <!-- Iconos -->
+      <div class="tagline-icons">
+        <div class="tagline-icon" title="Escritor">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="tagline-icon" title="Creador">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="tagline-icon" title="Pensador">
+          <i class="fas fa-brain"></i>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -703,9 +445,6 @@
       </div>
     </section>
 
-    <!-- Red neuronal/micelio visual -->
-    <div class="neural-network" id="neuralNetwork"></div>
-
     <!-- Sección de Libros -->
     <section id="libros">
       <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 20px; position: relative;">
@@ -714,24 +453,19 @@
           <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #888, #ccc);"></span>
         </span>
       </h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-style: italic; color: #555;">
-        Exploraciones literarias que trascienden lo convencional
-      </p>
       
       <div class="books">
-        <!-- Libro 1 -->
         <div class="book-wrapper">
           <a href="https://www.amazon.com/tu-libro-en-amazon" target="_blank">
-            <img src="images/Portada1.png" alt="Portada del libro 1" class="animate-on-scroll">
+            <img src="images/Portada1.png" alt="Portada del libro 1">
           </a>
           <p class="book-title">El Camino del Silencio</p>
           <a href="https://www.amazon.com/tu-libro-en-amazon" target="_blank" class="view-button">Comprar ahora</a>
         </div>
 
-        <!-- Libro 2 -->
         <div class="book-wrapper">
           <a href="https://www.amazon.com/tu-libro-en-amazon" target="_blank">
-            <img src="images/Portada2.jpg" alt="Portada del libro 2" class="animate-on-scroll">
+            <img src="images/Portada2.jpg" alt="Portada del libro 2">
           </a>
           <p class="book-title">Historias de la Noche</p>
           <a href="https://www.amazon.com/tu-libro-en-amazon" target="_blank" class="view-button">Comprar ahora</a>
@@ -745,178 +479,50 @@
   </footer>
 
   <script>
-    // Generar letras aleatorias alrededor del nombre que se dispersan por toda la página
-    const randomLettersContainer = document.getElementById('randomLetters');
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const numLetters = 120;
-    
-    // Obtener posición central del nombre
-    const nameContainer = document.querySelector('.name-container');
-    const nameRect = nameContainer.getBoundingClientRect();
-    const centerX = nameRect.left + nameRect.width / 2;
-    const centerY = nameRect.top + nameRect.height / 2;
-    
-    for (let i = 0; i < numLetters; i++) {
-      const letter = document.createElement('span');
-      letter.className = 'random-letter';
-      letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
-      
-      // Configurar posición inicial cerca del nombre
-      const angle = Math.random() * Math.PI * 2;
-      const distance = Math.random() * 50 + 20;
-      const startX = centerX + Math.cos(angle) * distance - 15;
-      const startY = centerY + Math.sin(angle) * distance - 15;
-      
-      // Posición final aleatoria en la página
-      const endX = (Math.random() - 0.5) * window.innerWidth * 2;
-      const endY = (Math.random() - 0.5) * window.innerHeight * 2;
-      
-      // Tamaño aleatorio
-      const size = Math.random() * 1 + 1.2;
-      
-      // Duración de animación
-      const duration = Math.random() * 20 + 20;
-      
-      letter.style.left = `${startX}px`;
-      letter.style.top = `${startY}px`;
-      letter.style.fontSize = `${size}rem`;
-      letter.style.opacity = Math.random() * 0.3 + 0.5;
-      letter.style.setProperty('--end-x', `${endX}px`);
-      letter.style.setProperty('--end-y', `${endY}px`);
-      letter.style.animationDuration = `${duration}s`;
-      
-      randomLettersContainer.appendChild(letter);
-    }
-
-    // Generar partículas electrificantes (blanco y negro)
-    const particleViewer = document.getElementById('particleViewer');
-    const numParticles = 60;
+    // Partículas reducidas
+    const particlesContainer = document.getElementById('particles');
+    const numParticles = 30;
     
     for (let i = 0; i < numParticles; i++) {
       const particle = document.createElement('div');
-      particle.className = 'electric-particle';
+      particle.className = 'particle';
       
-      // Posición aleatoria
-      const posX = Math.random() * 100;
-      const posY = Math.random() * 100;
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      const tx = (Math.random() - 0.5) * 200;
+      const ty = (Math.random() - 0.5) * 200;
+      const duration = 10 + Math.random() * 20;
+      const size = 1 + Math.random() * 2;
+      const delay = Math.random() * 5;
       
-      // Tamaño y opacidad aleatorios
-      const size = Math.random() * 3 + 1;
-      const opacity = Math.random() * 0.5 + 0.3;
-      
-      // Alternar entre blanco y negro
-      const color = Math.random() > 0.7 ? 'black' : 'white';
-      
-      particle.style.left = `${posX}%`;
-      particle.style.top = `${posY}%`;
+      particle.style.left = `${startX}%`;
+      particle.style.top = `${startY}%`;
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
-      particle.style.background = color;
-      particle.style.boxShadow = `0 0 ${size*2}px ${size/2}px ${color}`;
-      particle.style.animationDelay = `${Math.random() * 2}s`;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
       
-      particleViewer.appendChild(particle);
+      particlesContainer.appendChild(particle);
     }
 
-    // Crear red neuronal/micelio
-    const neuralNetwork = document.getElementById('neuralNetwork');
-    const numNodes = 12;
-    const nodes = [];
-    
-    // Crear nodos
-    for (let i = 0; i < numNodes; i++) {
-      const node = document.createElement('div');
-      node.className = 'neural-node';
-      
-      // Posición aleatoria pero distribuida
-      let posX, posY;
-      if (i < numNodes/3) {
-        // Primera columna (izquierda)
-        posX = 10 + Math.random() * 10;
-        posY = 20 + Math.random() * 60;
-      } else if (i < (numNodes/3)*2) {
-        // Columna central
-        posX = 45 + Math.random() * 10;
-        posY = 20 + Math.random() * 60;
-      } else {
-        // Columna derecha
-        posX = 80 + Math.random() * 10;
-        posY = 20 + Math.random() * 60;
-      }
-      
-      node.style.left = `${posX}%`;
-      node.style.top = `${posY}%`;
-      node.style.animationDelay = `${Math.random() * 2}s`;
-      
-      neuralNetwork.appendChild(node);
-      nodes.push({x: posX, y: posY});
-    }
-    
-    // Crear conexiones
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        // Solo conectar algunos nodos aleatoriamente
-        if (Math.random() > 0.7) {
-          const line = document.createElement('div');
-          line.className = 'neural-line';
-          
-          const node1 = nodes[i];
-          const node2 = nodes[j];
-          
-          // Calcular distancia y ángulo entre nodos
-          const dx = node2.x - node1.x;
-          const dy = node2.y - node1.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-          
-          line.style.width = `${distance}%`;
-          line.style.left = `${node1.x}%`;
-          line.style.top = `${node1.y}%`;
-          line.style.transform = `rotate(${angle}deg)`;
-          line.style.animationDelay = `${Math.random() * 0.5}s`;
-          
-          neuralNetwork.appendChild(line);
-        }
-      }
-    }
-
-    // Animación de versos al hacer scroll
+    // Animación de versos optimizada
     const versos = document.querySelectorAll('.verso');
-
-    function checkScroll() {
-      const poemaSection = document.querySelector('.poema-container');
-      const sectionTop = poemaSection.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-
-      if (sectionTop < windowHeight - 100) {
-        versos.forEach((verso, index) => {
-          setTimeout(() => {
-            verso.classList.add('visible');
-          }, index * 500);
-        });
-        window.removeEventListener('scroll', checkScroll);
-      }
-    }
-
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('load', checkScroll);
-
-    // Activar animación de iconos sociales
-    const socialLinks = document.querySelectorAll('.social-top a');
-    socialLinks.forEach(link => {
-      link.style.animationPlayState = 'running';
-    });
-
-    // Efecto hover más pronunciado para los libros
-    const bookWrappers = document.querySelectorAll('.book-wrapper');
-    bookWrappers.forEach(book => {
-      book.addEventListener('mouseenter', () => {
-        book.style.boxShadow = `0 15px 40px rgba(0,0,0,0.3)`;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          versos.forEach((verso, index) => {
+            setTimeout(() => {
+              verso.classList.add('visible');
+            }, index * 200);
+          });
+          observer.disconnect();
+        }
       });
-      book.addEventListener('mouseleave', () => {
-        book.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-      });
-    });
+    }, {threshold: 0.1});
+
+    observer.observe(document.querySelector('.poema-container'));
   </script>
 </body>
 </html>
