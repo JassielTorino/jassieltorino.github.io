@@ -22,8 +22,9 @@
       --glass-bg: rgba(255, 255, 255, 0.2);
       --glass-border: rgba(255, 255, 255, 0.3);
       --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      --electric-color: rgba(150, 150, 150, 0.8);
-      --electric-glow: 0 0 10px rgba(150, 150, 150, 0.8);
+      --aurora-color-1: rgba(180, 180, 180, 0.3);
+      --aurora-color-2: rgba(200, 200, 200, 0.2);
+      --border-gray: #888888;
     }
 
     body {
@@ -163,7 +164,7 @@
       transform: translateY(-5px);
     }
 
-    /* Letras flotantes por toda la página */
+    /* Letras flotantes por toda la página - Más visibles */
     .random-letters {
       position: fixed;
       top: 0;
@@ -177,19 +178,19 @@
 
     .random-letter {
       position: absolute;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-family: 'Playfair Display', serif;
-      color: rgba(0,0,0,0.1);
-      animation: float 15s infinite ease-in-out;
-      opacity: 0;
+      color: rgba(0,0,0,0.3); /* Más visibles */
+      animation: float 20s infinite ease-in-out; /* Más lento */
+      opacity: 0.5; /* Más opacidad */
       will-change: transform, opacity;
+      font-weight: 500;
     }
 
     @keyframes float {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.3; }
-      90% { opacity: 0.1; }
-      100% { transform: translate(var(--end-x), var(--end-y)) rotate(360deg); opacity: 0; }
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+      50% { opacity: 0.8; } /* Pico de opacidad */
+      100% { transform: translate(var(--end-x), var(--end-y)) rotate(360deg); opacity: 0.3; }
     }
 
     .tagline {
@@ -208,7 +209,7 @@
       position: relative;
     }
 
-    /* Secciones con textura de papel arrugado/quemado */
+    /* Secciones con textura - Menos intrusiva */
     section {
       margin-bottom: 80px;
       padding: 50px;
@@ -230,10 +231,11 @@
       right: 0;
       bottom: 0;
       background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-      opacity: 0.1;
+      opacity: 0.08; /* Menos opacidad */
       pointer-events: none;
     }
 
+    /* Efecto aurora boreal */
     section::after {
       content: '';
       position: absolute;
@@ -246,26 +248,26 @@
         transparent,
         transparent,
         transparent,
-        var(--electric-color),
-        transparent,
+        var(--aurora-color-1),
+        var(--aurora-color-2),
         transparent,
         transparent
       );
-      transform: rotate(30deg);
-      animation: shine 6s infinite;
+      transform: rotate(20deg);
+      animation: aurora 30s infinite linear; /* Más lento */
       z-index: 0;
       opacity: 0.5;
+      mix-blend-mode: overlay;
     }
 
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(30deg); }
-      20% { transform: translateX(100%) rotate(30deg); }
-      100% { transform: translateX(100%) rotate(30deg); }
+    @keyframes aurora {
+      0% { transform: translateX(-100%) rotate(20deg); }
+      50% { transform: translateX(0%) rotate(20deg); opacity: 0.7; }
+      100% { transform: translateX(100%) rotate(20deg); }
     }
 
     section:hover {
       box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
-                  var(--electric-glow),
                   inset 0 0 30px rgba(0,0,0,0.1);
     }
 
@@ -275,6 +277,7 @@
       max-width: 700px;
       margin: 0 auto;
       position: relative;
+      z-index: 1;
     }
 
     .poema {
@@ -315,7 +318,7 @@
       right: -40px;
     }
 
-    /* Sección de Libros - Versión con textura */
+    /* Sección de Libros - Con bordes grises */
     .books {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -336,7 +339,7 @@
       position: relative;
       border-radius: 5px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid var(--border-gray); /* Borde gris */
     }
 
     .book-wrapper::before {
@@ -349,20 +352,20 @@
       background: linear-gradient(45deg, 
                     transparent, 
                     transparent, 
-                    var(--electric-color), 
+                    var(--aurora-color-1), 
                     transparent, 
                     transparent);
       z-index: 0;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.6s ease;
     }
 
     .book-wrapper:hover::before {
       opacity: 0.3;
-      animation: electricFlow 2s linear infinite;
+      animation: auroraFlow 15s linear infinite; /* Más lento */
     }
 
-    @keyframes electricFlow {
+    @keyframes auroraFlow {
       0% { transform: translateY(-100%); }
       100% { transform: translateY(100%); }
     }
@@ -370,8 +373,8 @@
     .book-wrapper:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0,0,0,0.2), 
-                  var(--electric-glow),
                   inset 0 0 20px rgba(0,0,0,0.1);
+      border-color: var(--primary-color); /* Borde más oscuro al hover */
     }
 
     .book-wrapper img {
@@ -384,6 +387,7 @@
       border-radius: 3px;
       position: relative;
       z-index: 1;
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
     .book-wrapper:hover img {
@@ -430,7 +434,7 @@
       font-size: 1rem;
       font-weight: 500;
       transition: all 0.3s ease;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--border-gray); /* Borde gris */
       font-family: 'Cormorant Garamond', serif;
       position: relative;
       overflow: hidden;
@@ -451,7 +455,7 @@
 
     .view-button:hover {
       color: white;
-      border-color: transparent;
+      border-color: var(--primary-color);
     }
 
     .view-button:hover::before {
@@ -515,6 +519,11 @@
         width: 32px;
         height: 32px;
         font-size: 1rem;
+      }
+
+      .random-letter {
+        font-size: 1.4rem;
+        opacity: 0.4;
       }
     }
 
@@ -659,7 +668,7 @@
     // Generar letras aleatorias alrededor del nombre que se dispersan por toda la página
     const randomLettersContainer = document.getElementById('randomLetters');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const numLetters = 80;
+    const numLetters = 100; // Más letras
     
     // Obtener posición central del nombre
     const nameContainer = document.querySelector('.name-container');
@@ -683,21 +692,19 @@
       const endY = (Math.random() - 0.5) * window.innerHeight * 2;
       
       // Tamaño aleatorio
-      const size = Math.random() * 0.8 + 0.8;
+      const size = Math.random() * 1 + 1.2; // Más grandes
       
       // Duración de animación
-      const duration = Math.random() * 10 + 15;
-      
-      // Opacidad basada en la distancia
-      const opacity = 0.1 + Math.random() * 0.2;
+      const duration = Math.random() * 20 + 20; // Más lento
       
       letter.style.left = `${startX}px`;
       letter.style.top = `${startY}px`;
       letter.style.fontSize = `${size}rem`;
-      letter.style.opacity = opacity;
+      letter.style.opacity = Math.random() * 0.3 + 0.5; // Más visibles (0.5 a 0.8)
       letter.style.setProperty('--end-x', `${endX}px`);
       letter.style.setProperty('--end-y', `${endY}px`);
       letter.style.animationDuration = `${duration}s`;
+      letter.style.animationDelay = `${Math.random() * 5}s`;
       
       randomLettersContainer.appendChild(letter);
     }
@@ -729,25 +736,11 @@
       link.style.animationPlayState = 'running';
     });
 
-    // Efecto eléctrico aleatorio para las secciones (más exagerado)
-    const sections = document.querySelectorAll('section');
-    
-    setInterval(() => {
-      sections.forEach(section => {
-        if(Math.random() > 0.8) {
-          section.style.boxShadow = `0 0 30px rgba(150, 150, 150, 0.8)`;
-          setTimeout(() => {
-            section.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-          }, 500);
-        }
-      });
-    }, 2000);
-
     // Efecto hover más pronunciado para los libros
     const bookWrappers = document.querySelectorAll('.book-wrapper');
     bookWrappers.forEach(book => {
       book.addEventListener('mouseenter', () => {
-        book.style.boxShadow = `0 15px 40px rgba(0,0,0,0.3), 0 0 20px rgba(150, 150, 150, 0.8)`;
+        book.style.boxShadow = `0 15px 40px rgba(0,0,0,0.3)`;
       });
       book.addEventListener('mouseleave', () => {
         book.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
