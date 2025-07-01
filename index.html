@@ -284,8 +284,8 @@
 
     .poema {
       font-style: italic;
-      font-size: 1.2rem;
-      line-height: 2;
+      font-size: 1.3rem;
+      line-height: 2.2;
       max-width: 600px;
       margin: 0 auto;
       position: relative;
@@ -457,17 +457,26 @@
       <p class="tagline">Escritor | Inspirador | Creador</p>
 
       <nav>
-        <a href="#about">Acerca de</a>
+        <a href="#poema">Fragmento Poético</a>
         <a href="#libros">Mis Libros</a>
-        <a href="#poema">Poema</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="about">
-      <h2>Acerca de mí</h2>
-      <p>Soy Jassiel Torino, escritor apasionado por historias que tocan el corazón, desafían la mente y dejan huella. Mis novelas exploran lo místico, lo cotidiano y lo extraordinario. Este es mi espacio digital para compartir mis proyectos e inspirarte.</p>
+    <!-- Sección de Poema -->
+    <section id="poema">
+      <h2>Fragmento Poético</h2>
+      <div class="poema-container">
+        <div class="poema" id="poemaText">
+          <span class="verso">En el silencio de la página en blanco,</span>
+          <span class="verso">las palabras germinan como semillas antiguas.</span>
+          <span class="verso">Cada letra es un eco de mundos no vividos,</span>
+          <span class="verso">cada pausa, un universo por descubrir.</span>
+          <span class="verso">La tinta fluye como río de memorias,</span>
+          <span class="verso">y en su corriente navegan todos los sueños.</span>
+        </div>
+      </div>
     </section>
 
     <section id="libros">
@@ -492,21 +501,6 @@
           <a href="https://www.amazon.com/tu-libro-en-amazon" target="_blank" class="view-button">Ver libro</a>
         </div>
 
-      </div>
-    </section>
-
-    <!-- Sección de Poema -->
-    <section id="poema">
-      <h2>Fragmento Poético</h2>
-      <div class="poema-container">
-        <div class="poema" id="poema">
-          <span class="verso">En el silencio de la página en blanco,</span>
-          <span class="verso">las palabras germinan como semillas antiguas.</span>
-          <span class="verso">Cada letra es un eco de mundos no vividos,</span>
-          <span class="verso">cada pausa, un universo por descubrir.</span>
-          <span class="verso">La tinta fluye como río de memorias,</span>
-          <span class="verso">y en su corriente navegan todos los sueños.</span>
-        </div>
       </div>
     </section>
   </main>
@@ -601,6 +595,8 @@
       }
     }
 
+    // Activar animación del poema al cargar si ya está visible
+    window.addEventListener('load', checkPoemaVisibility);
     window.addEventListener('scroll', checkPoemaVisibility);
   </script>
 </body>
