@@ -111,8 +111,6 @@
       padding: 80px 20px 120px;
       text-align: center;
       scroll-margin-top: 100px;
-      background: url('https://www.transparenttextures.com/patterns/rice-paper.png') repeat;
-      background-size: 300px 300px;
     }
 
     .hero-content {
@@ -125,6 +123,55 @@
       backdrop-filter: blur(5px);
       border-radius: 5px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Sección marmoleada con letras griegas */
+    .marble-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    /* Teclas de máquina de escribir (abecedario griego) */
+    .greek-letters {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: space-around;
+      padding: 20px;
+      z-index: -1;
+    }
+
+    .greek-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.1rem;
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.1);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+
+    .greek-letter:hover {
+      opacity: 1;
+      transform: scale(1.2);
     }
 
     /* Efecto de letras */
@@ -169,7 +216,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: -1;
+      z-index: -2;
       overflow: hidden;
     }
 
@@ -221,7 +268,7 @@
       position: relative;
     }
 
-    /* Secciones con textura marmoleada y teclas de máquina de escribir */
+    /* Secciones */
     section {
       margin-bottom: 80px;
       padding: 50px;
@@ -232,33 +279,6 @@
       transition: all 0.5s ease;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* Teclas de máquina de escribir (abecedario griego) */
-    .typewriter-keys {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      max-width: 200px;
-      justify-content: center;
-    }
-
-    .typewriter-key {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Times New Roman', serif;
-      font-size: 1.1rem;
-      color: #333;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       border: 1px solid rgba(0,0,0,0.1);
     }
 
@@ -470,7 +490,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: -1;
+      z-index: -3;
     }
 
     .electric-particle {
@@ -566,6 +586,12 @@
         max-width: 200px;
         margin: 0 auto;
       }
+
+      .greek-letter {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -586,8 +612,10 @@
         padding: 8px 15px;
       }
 
-      .typewriter-keys {
-        display: none;
+      .greek-letter {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -623,6 +651,14 @@
 
   <!-- Sección Hero con nombre -->
   <section class="hero-section" id="inicio">
+    <!-- Fondo con textura de arroz (está en el body) -->
+    
+    <!-- Sección marmoleada con letras griegas -->
+    <div class="marble-section">
+      <div class="greek-letters" id="greekLetters"></div>
+    </div>
+    
+    <!-- Contenido principal centrado -->
     <div class="hero-content">
       <div class="name-container">
         <!-- Letras del nombre Jassiel Torino -->
@@ -661,7 +697,6 @@
   <main>
     <!-- Sección de Poema -->
     <section>
-      <div class="typewriter-keys" id="typewriterKeys"></div>
       <div class="poema-container">
         <div class="poema" id="poemaText">
           <span class="verso">En el silencio de la página en blanco,</span>
@@ -800,15 +835,30 @@
       particleViewer.appendChild(particle);
     }
 
-    // Generar teclas de máquina de escribir con abecedario griego
-    const typewriterKeysContainer = document.getElementById('typewriterKeys');
+    // Generar letras griegas en la sección marmoleada
+    const greekLettersContainer = document.getElementById('greekLetters');
     const greekLetters = 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω';
     
-    for (let i = 0; i < greekLetters.length; i++) {
-      const key = document.createElement('div');
-      key.className = 'typewriter-key';
-      key.textContent = greekLetters.charAt(i);
-      typewriterKeysContainer.appendChild(key);
+    for (let i = 0; i < 50; i++) { // Generar 50 letras griegas
+      const letter = document.createElement('div');
+      letter.className = 'greek-letter';
+      letter.textContent = greekLetters.charAt(Math.floor(Math.random() * greekLetters.length));
+      
+      // Posición aleatoria en la sección
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      
+      letter.style.left = `${posX}%`;
+      letter.style.top = `${posY}%`;
+      
+      // Tamaño aleatorio
+      const size = Math.random() * 0.5 + 0.8;
+      letter.style.transform = `scale(${size})`;
+      
+      // Retraso de animación
+      letter.style.transitionDelay = `${Math.random() * 0.5}s`;
+      
+      greekLettersContainer.appendChild(letter);
     }
 
     // Animación de versos al hacer scroll
