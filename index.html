@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jassiel Torino - Escritor y Científico</title>
+  <title>Jassiel Torino - Escritor</title>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -108,14 +108,14 @@
       background: rgba(255,255,255,1);
     }
 
-    /* Cabecera con fondo de arroz */
+    /* Cabecera con fondo de arroz - Ajustada más arriba */
     .hero-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* Cambiado para centrar más arriba */
       position: relative;
-      padding: 120px 20px;
+      padding: 80px 20px 120px; /* Más padding arriba */
       text-align: center;
       scroll-margin-top: 100px;
     }
@@ -130,6 +130,7 @@
       backdrop-filter: blur(5px);
       border-radius: 5px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-top: -50px; /* Levanta el recuadro */
     }
 
     /* Efecto de letras - Versión mejorada */
@@ -166,7 +167,7 @@
       transform: translateY(-5px);
     }
 
-    /* Letras flotantes por toda la página - Más visibles */
+    /* Letras flotantes por toda la página - Más visibles e inmediatas */
     .random-letters {
       position: fixed;
       top: 0;
@@ -187,12 +188,7 @@
       opacity: 0.5;
       will-change: transform, opacity;
       font-weight: 500;
-    }
-
-    .science-letter {
-      font-family: 'Times New Roman', serif;
-      font-style: italic;
-      color: rgba(50, 50, 50, 0.4);
+      animation-delay: 0s !important; /* Sin retraso */
     }
 
     @keyframes float {
@@ -458,31 +454,7 @@
       width: 100%;
     }
 
-    /* Sección Científica */
-    .science-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .science-badge {
-      background: rgba(255,255,255,0.9);
-      border-radius: 20px;
-      padding: 8px 15px;
-      font-size: 0.9rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .science-badge i {
-      color: #555;
-    }
-
-    /* Visualizador de partículas científicas */
+    /* Visualizador de partículas electrificantes */
     .particle-viewer {
       position: fixed;
       top: 0;
@@ -493,63 +465,57 @@
       z-index: -1;
     }
 
-    .science-particle {
+    .electric-particle {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 2px;
+      height: 2px;
       border-radius: 50%;
-      background: rgba(100, 100, 100, 0.3);
-      animation: particle-float 15s infinite linear;
+      background: white;
+      box-shadow: 0 0 5px 1px white;
+      animation: electric-pulse 2s infinite ease-in-out;
+      opacity: 0;
     }
 
-    @keyframes particle-float {
-      0% { transform: translate(0, 0); opacity: 0; }
-      10% { opacity: 0.5; }
-      90% { opacity: 0.5; }
-      100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+    @keyframes electric-pulse {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.8; transform: scale(1.5); box-shadow: 0 0 10px 2px white; }
+      100% { opacity: 0; transform: scale(0.5); }
     }
 
-    /* Elemento visual de conexión ciencia-literatura */
-    .connection-visual {
+    /* Red neuronal/micelio */
+    .neural-network {
       width: 100%;
       height: 200px;
       position: relative;
-      margin: 60px 0;
+      margin: 80px 0;
     }
 
-    .connection-line {
+    .neural-line {
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
+      background: linear-gradient(to right, transparent, #888, transparent);
       height: 1px;
-      background: linear-gradient(90deg, transparent, #888, transparent);
+      transform-origin: left center;
+      animation: neural-grow 3s forwards;
     }
 
-    .connection-node {
+    .neural-node {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #888;
-      top: 50%;
-      transform: translateY(-50%);
+      animation: neural-pulse 2s infinite ease-in-out;
     }
 
-    .connection-node:nth-child(1) { left: 20%; }
-    .connection-node:nth-child(2) { left: 50%; }
-    .connection-node:nth-child(3) { left: 80%; }
-
-    .connection-label {
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      top: 60px;
-      transform: translateX(-50%);
+    @keyframes neural-grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
     }
 
-    .connection-label:nth-child(4) { left: 20%; }
-    .connection-label:nth-child(5) { left: 50%; }
-    .connection-label:nth-child(6) { left: 80%; }
+    @keyframes neural-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
 
     footer {
       text-align: center;
@@ -576,6 +542,7 @@
     @media (max-width: 768px) {
       .hero-content {
         padding: 40px 20px;
+        margin-top: -30px;
       }
       
       .name-letter {
@@ -614,9 +581,22 @@
         font-size: 1.4rem;
         opacity: 0.4;
       }
+
+      .neural-network {
+        height: 150px;
+        margin: 50px 0;
+      }
     }
 
     @media (max-width: 480px) {
+      .hero-section {
+        padding: 60px 20px 100px;
+      }
+      
+      .hero-content {
+        margin-top: -20px;
+      }
+      
       .name-letter {
         font-size: 2.5rem;
       }
@@ -637,6 +617,11 @@
       .social-top {
         gap: 8px;
         padding: 8px 15px;
+      }
+
+      .neural-network {
+        height: 120px;
+        margin: 30px 0;
       }
     }
   </style>
@@ -667,7 +652,7 @@
     </a>
   </div>
 
-  <!-- Visualizador de partículas científicas -->
+  <!-- Visualizador de partículas electrificantes -->
   <div class="particle-viewer" id="particleViewer"></div>
 
   <!-- Sección Hero con nombre -->
@@ -699,23 +684,7 @@
         <div class="random-letters" id="randomLetters"></div>
       </div>
       
-      <p class="tagline">Escritor | Científico | Creador</p>
-      
-      <!-- Badges científicos -->
-      <div class="science-badges">
-        <div class="science-badge">
-          <i class="fas fa-atom"></i>
-          <span>Investigación</span>
-        </div>
-        <div class="science-badge">
-          <i class="fas fa-microscope"></i>
-          <span>Análisis</span>
-        </div>
-        <div class="science-badge">
-          <i class="fas fa-flask"></i>
-          <span>Experimentación</span>
-        </div>
-      </div>
+      <p class="tagline">Escritor | Creador | Pensador</p>
     </div>
   </section>
 
@@ -734,16 +703,8 @@
       </div>
     </section>
 
-    <!-- Visualización de conexión ciencia-literatura -->
-    <div class="connection-visual">
-      <div class="connection-line"></div>
-      <div class="connection-node"></div>
-      <div class="connection-node"></div>
-      <div class="connection-node"></div>
-      <div class="connection-label">Ciencia</div>
-      <div class="connection-label">Fusión</div>
-      <div class="connection-label">Literatura</div>
-    </div>
+    <!-- Red neuronal/micelio visual -->
+    <div class="neural-network" id="neuralNetwork"></div>
 
     <!-- Sección de Libros -->
     <section id="libros">
@@ -754,7 +715,7 @@
         </span>
       </h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-style: italic; color: #555;">
-        Descubre mis libros donde la ciencia y la literatura se entrelazan
+        Exploraciones literarias que trascienden lo convencional
       </p>
       
       <div class="books">
@@ -777,53 +738,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Nueva Sección Científica -->
-    <section id="ciencia">
-      <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 20px; position: relative;">
-        <span style="position: relative; display: inline-block;">
-          Trabajo Científico
-          <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #888, #ccc);"></span>
-        </span>
-      </h2>
-      
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-          <!-- Área de investigación -->
-          <div style="background: rgba(255,255,255,0.7); padding: 25px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-search" style="color: #555;"></i>
-              Áreas de Investigación
-            </h3>
-            <ul style="padding-left: 20px;">
-              <li style="margin-bottom: 10px;">Física teórica aplicada</li>
-              <li style="margin-bottom: 10px;">Neurociencia cognitiva</li>
-              <li style="margin-bottom: 10px;">Intersección ciencia-literatura</li>
-            </ul>
-          </div>
-          
-          <!-- Publicaciones -->
-          <div style="background: rgba(255,255,255,0.7); padding: 25px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-book-open" style="color: #555;"></i>
-              Publicaciones Científicas
-            </h3>
-            <ul style="padding-left: 20px;">
-              <li style="margin-bottom: 10px;">"La física de lo imposible" - Revista Ciencia (2023)</li>
-              <li style="margin-bottom: 10px;">"Mente y lenguaje" - Journal of Cognitive Studies (2022)</li>
-              <li><a href="#" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dotted; font-style: italic;">Ver todas las publicaciones</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="#" style="display: inline-block; padding: 12px 30px; background: transparent; color: var(--primary-color); border-radius: 30px; text-decoration: none; font-size: 1rem; transition: all 0.3s ease; border: 1px solid var(--border-gray); font-family: 'Cormorant Garamond', serif;">
-            <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>
-            Más sobre mi trabajo científico
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -834,8 +748,7 @@
     // Generar letras aleatorias alrededor del nombre que se dispersan por toda la página
     const randomLettersContainer = document.getElementById('randomLetters');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const scienceSymbols = 'αβγδεζηθικλμνξοπρστυφχψω';
-    const numLetters = 120; // Más letras
+    const numLetters = 120;
     
     // Obtener posición central del nombre
     const nameContainer = document.querySelector('.name-container');
@@ -845,15 +758,8 @@
     
     for (let i = 0; i < numLetters; i++) {
       const letter = document.createElement('span');
-      
-      // Alternar entre letras normales y símbolos científicos
-      if (Math.random() > 0.7) {
-        letter.className = 'random-letter science-letter';
-        letter.textContent = scienceSymbols.charAt(Math.floor(Math.random() * scienceSymbols.length));
-      } else {
-        letter.className = 'random-letter';
-        letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
-      }
+      letter.className = 'random-letter';
+      letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
       
       // Configurar posición inicial cerca del nombre
       const angle = Math.random() * Math.PI * 2;
@@ -878,34 +784,100 @@
       letter.style.setProperty('--end-x', `${endX}px`);
       letter.style.setProperty('--end-y', `${endY}px`);
       letter.style.animationDuration = `${duration}s`;
-      letter.style.animationDelay = `${Math.random() * 5}s`;
       
       randomLettersContainer.appendChild(letter);
     }
 
-    // Generar partículas científicas
+    // Generar partículas electrificantes (blanco y negro)
     const particleViewer = document.getElementById('particleViewer');
-    const numParticles = 40;
+    const numParticles = 60;
     
     for (let i = 0; i < numParticles; i++) {
       const particle = document.createElement('div');
-      particle.className = 'science-particle';
+      particle.className = 'electric-particle';
       
-      // Posición inicial aleatoria
-      const startX = Math.random() * window.innerWidth;
-      const startY = Math.random() * window.innerHeight;
+      // Posición aleatoria
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
       
-      // Movimiento aleatorio
-      const tx = (Math.random() - 0.5) * 500;
-      const ty = (Math.random() - 0.5) * 500;
+      // Tamaño y opacidad aleatorios
+      const size = Math.random() * 3 + 1;
+      const opacity = Math.random() * 0.5 + 0.3;
       
-      particle.style.left = `${startX}px`;
-      particle.style.top = `${startY}px`;
-      particle.style.setProperty('--tx', `${tx}px`);
-      particle.style.setProperty('--ty', `${ty}px`);
-      particle.style.animationDelay = `${Math.random() * 5}s`;
+      // Alternar entre blanco y negro
+      const color = Math.random() > 0.7 ? 'black' : 'white';
+      
+      particle.style.left = `${posX}%`;
+      particle.style.top = `${posY}%`;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.background = color;
+      particle.style.boxShadow = `0 0 ${size*2}px ${size/2}px ${color}`;
+      particle.style.animationDelay = `${Math.random() * 2}s`;
       
       particleViewer.appendChild(particle);
+    }
+
+    // Crear red neuronal/micelio
+    const neuralNetwork = document.getElementById('neuralNetwork');
+    const numNodes = 12;
+    const nodes = [];
+    
+    // Crear nodos
+    for (let i = 0; i < numNodes; i++) {
+      const node = document.createElement('div');
+      node.className = 'neural-node';
+      
+      // Posición aleatoria pero distribuida
+      let posX, posY;
+      if (i < numNodes/3) {
+        // Primera columna (izquierda)
+        posX = 10 + Math.random() * 10;
+        posY = 20 + Math.random() * 60;
+      } else if (i < (numNodes/3)*2) {
+        // Columna central
+        posX = 45 + Math.random() * 10;
+        posY = 20 + Math.random() * 60;
+      } else {
+        // Columna derecha
+        posX = 80 + Math.random() * 10;
+        posY = 20 + Math.random() * 60;
+      }
+      
+      node.style.left = `${posX}%`;
+      node.style.top = `${posY}%`;
+      node.style.animationDelay = `${Math.random() * 2}s`;
+      
+      neuralNetwork.appendChild(node);
+      nodes.push({x: posX, y: posY});
+    }
+    
+    // Crear conexiones
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        // Solo conectar algunos nodos aleatoriamente
+        if (Math.random() > 0.7) {
+          const line = document.createElement('div');
+          line.className = 'neural-line';
+          
+          const node1 = nodes[i];
+          const node2 = nodes[j];
+          
+          // Calcular distancia y ángulo entre nodos
+          const dx = node2.x - node1.x;
+          const dy = node2.y - node1.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          
+          line.style.width = `${distance}%`;
+          line.style.left = `${node1.x}%`;
+          line.style.top = `${node1.y}%`;
+          line.style.transform = `rotate(${angle}deg)`;
+          line.style.animationDelay = `${Math.random() * 0.5}s`;
+          
+          neuralNetwork.appendChild(line);
+        }
+      }
     }
 
     // Animación de versos al hacer scroll
