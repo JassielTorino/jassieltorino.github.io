@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jassiel Torino - Escritor</title>
+  <title>Jassiel Torino - Escritor y Científico</title>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -117,6 +117,7 @@
       position: relative;
       padding: 120px 20px;
       text-align: center;
+      scroll-margin-top: 100px;
     }
 
     .hero-content {
@@ -158,6 +159,7 @@
       margin: 0 5px;
       position: relative;
       transition: transform 0.3s ease;
+      cursor: default;
     }
 
     .name-letter:hover {
@@ -180,16 +182,22 @@
       position: absolute;
       font-size: 1.8rem;
       font-family: 'Playfair Display', serif;
-      color: rgba(0,0,0,0.3); /* Más visibles */
-      animation: float 20s infinite ease-in-out; /* Más lento */
-      opacity: 0.5; /* Más opacidad */
+      color: rgba(0,0,0,0.3);
+      animation: float 20s infinite ease-in-out;
+      opacity: 0.5;
       will-change: transform, opacity;
       font-weight: 500;
     }
 
+    .science-letter {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      color: rgba(50, 50, 50, 0.4);
+    }
+
     @keyframes float {
       0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-      50% { opacity: 0.8; } /* Pico de opacidad */
+      50% { opacity: 0.8; }
       100% { transform: translate(var(--end-x), var(--end-y)) rotate(360deg); opacity: 0.3; }
     }
 
@@ -209,30 +217,18 @@
       position: relative;
     }
 
-    /* Secciones con textura - Menos intrusiva */
+    /* Secciones con textura marmoleada */
     section {
       margin-bottom: 80px;
       padding: 50px;
       border-radius: 5px;
-      background: var(--section-bg) url('https://www.transparenttextures.com/patterns/crissxcross.png');
+      background: var(--section-bg) url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
       box-shadow: 0 5px 20px rgba(0,0,0,0.1), 
                   inset 0 0 30px rgba(0,0,0,0.05);
       transition: all 0.5s ease;
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(0,0,0,0.1);
-    }
-
-    section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-      opacity: 0.08; /* Menos opacidad */
-      pointer-events: none;
     }
 
     /* Efecto aurora boreal */
@@ -254,7 +250,7 @@
         transparent
       );
       transform: rotate(20deg);
-      animation: aurora 30s infinite linear; /* Más lento */
+      animation: aurora 30s infinite linear;
       z-index: 0;
       opacity: 0.5;
       mix-blend-mode: overlay;
@@ -339,7 +335,7 @@
       position: relative;
       border-radius: 5px;
       overflow: hidden;
-      border: 1px solid var(--border-gray); /* Borde gris */
+      border: 1px solid var(--border-gray);
     }
 
     .book-wrapper::before {
@@ -362,7 +358,7 @@
 
     .book-wrapper:hover::before {
       opacity: 0.3;
-      animation: auroraFlow 15s linear infinite; /* Más lento */
+      animation: auroraFlow 15s linear infinite;
     }
 
     @keyframes auroraFlow {
@@ -374,7 +370,7 @@
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0,0,0,0.2), 
                   inset 0 0 20px rgba(0,0,0,0.1);
-      border-color: var(--primary-color); /* Borde más oscuro al hover */
+      border-color: var(--primary-color);
     }
 
     .book-wrapper img {
@@ -434,7 +430,7 @@
       font-size: 1rem;
       font-weight: 500;
       transition: all 0.3s ease;
-      border: 1px solid var(--border-gray); /* Borde gris */
+      border: 1px solid var(--border-gray);
       font-family: 'Cormorant Garamond', serif;
       position: relative;
       overflow: hidden;
@@ -461,6 +457,99 @@
     .view-button:hover::before {
       width: 100%;
     }
+
+    /* Sección Científica */
+    .science-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .science-badge {
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .science-badge i {
+      color: #555;
+    }
+
+    /* Visualizador de partículas científicas */
+    .particle-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .science-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(100, 100, 100, 0.3);
+      animation: particle-float 15s infinite linear;
+    }
+
+    @keyframes particle-float {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+    }
+
+    /* Elemento visual de conexión ciencia-literatura */
+    .connection-visual {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      margin: 60px 0;
+    }
+
+    .connection-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #888, transparent);
+    }
+
+    .connection-node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #888;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .connection-node:nth-child(1) { left: 20%; }
+    .connection-node:nth-child(2) { left: 50%; }
+    .connection-node:nth-child(3) { left: 80%; }
+
+    .connection-label {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      top: 60px;
+      transform: translateX(-50%);
+    }
+
+    .connection-label:nth-child(4) { left: 20%; }
+    .connection-label:nth-child(5) { left: 50%; }
+    .connection-label:nth-child(6) { left: 80%; }
 
     footer {
       text-align: center;
@@ -578,8 +667,11 @@
     </a>
   </div>
 
+  <!-- Visualizador de partículas científicas -->
+  <div class="particle-viewer" id="particleViewer"></div>
+
   <!-- Sección Hero con nombre -->
-  <section class="hero-section">
+  <section class="hero-section" id="inicio">
     <div class="hero-content">
       <div class="name-container">
         <!-- Letras del nombre Jassiel Torino - Versión mejorada -->
@@ -607,7 +699,23 @@
         <div class="random-letters" id="randomLetters"></div>
       </div>
       
-      <p class="tagline">Escritor | Inspirador | Creador</p>
+      <p class="tagline">Escritor | Científico | Creador</p>
+      
+      <!-- Badges científicos -->
+      <div class="science-badges">
+        <div class="science-badge">
+          <i class="fas fa-atom"></i>
+          <span>Investigación</span>
+        </div>
+        <div class="science-badge">
+          <i class="fas fa-microscope"></i>
+          <span>Análisis</span>
+        </div>
+        <div class="science-badge">
+          <i class="fas fa-flask"></i>
+          <span>Experimentación</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -626,16 +734,27 @@
       </div>
     </section>
 
+    <!-- Visualización de conexión ciencia-literatura -->
+    <div class="connection-visual">
+      <div class="connection-line"></div>
+      <div class="connection-node"></div>
+      <div class="connection-node"></div>
+      <div class="connection-node"></div>
+      <div class="connection-label">Ciencia</div>
+      <div class="connection-label">Fusión</div>
+      <div class="connection-label">Literatura</div>
+    </div>
+
     <!-- Sección de Libros -->
     <section id="libros">
       <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 20px; position: relative;">
         <span style="position: relative; display: inline-block;">
-          Mis Obras
+          Mis Obras Literarias
           <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #888, #ccc);"></span>
         </span>
       </h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-style: italic; color: #555;">
-        Descubre mis libros y sumérgete en historias que te transportarán a otros mundos
+        Descubre mis libros donde la ciencia y la literatura se entrelazan
       </p>
       
       <div class="books">
@@ -658,6 +777,53 @@
         </div>
       </div>
     </section>
+
+    <!-- Nueva Sección Científica -->
+    <section id="ciencia">
+      <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 20px; position: relative;">
+        <span style="position: relative; display: inline-block;">
+          Trabajo Científico
+          <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #888, #ccc);"></span>
+        </span>
+      </h2>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+          <!-- Área de investigación -->
+          <div style="background: rgba(255,255,255,0.7); padding: 25px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-search" style="color: #555;"></i>
+              Áreas de Investigación
+            </h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 10px;">Física teórica aplicada</li>
+              <li style="margin-bottom: 10px;">Neurociencia cognitiva</li>
+              <li style="margin-bottom: 10px;">Intersección ciencia-literatura</li>
+            </ul>
+          </div>
+          
+          <!-- Publicaciones -->
+          <div style="background: rgba(255,255,255,0.7); padding: 25px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-book-open" style="color: #555;"></i>
+              Publicaciones Científicas
+            </h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 10px;">"La física de lo imposible" - Revista Ciencia (2023)</li>
+              <li style="margin-bottom: 10px;">"Mente y lenguaje" - Journal of Cognitive Studies (2022)</li>
+              <li><a href="#" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dotted; font-style: italic;">Ver todas las publicaciones</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="#" style="display: inline-block; padding: 12px 30px; background: transparent; color: var(--primary-color); border-radius: 30px; text-decoration: none; font-size: 1rem; transition: all 0.3s ease; border: 1px solid var(--border-gray); font-family: 'Cormorant Garamond', serif;">
+            <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>
+            Más sobre mi trabajo científico
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -668,7 +834,8 @@
     // Generar letras aleatorias alrededor del nombre que se dispersan por toda la página
     const randomLettersContainer = document.getElementById('randomLetters');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const numLetters = 100; // Más letras
+    const scienceSymbols = 'αβγδεζηθικλμνξοπρστυφχψω';
+    const numLetters = 120; // Más letras
     
     // Obtener posición central del nombre
     const nameContainer = document.querySelector('.name-container');
@@ -678,8 +845,15 @@
     
     for (let i = 0; i < numLetters; i++) {
       const letter = document.createElement('span');
-      letter.className = 'random-letter';
-      letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+      
+      // Alternar entre letras normales y símbolos científicos
+      if (Math.random() > 0.7) {
+        letter.className = 'random-letter science-letter';
+        letter.textContent = scienceSymbols.charAt(Math.floor(Math.random() * scienceSymbols.length));
+      } else {
+        letter.className = 'random-letter';
+        letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+      }
       
       // Configurar posición inicial cerca del nombre
       const angle = Math.random() * Math.PI * 2;
@@ -692,21 +866,46 @@
       const endY = (Math.random() - 0.5) * window.innerHeight * 2;
       
       // Tamaño aleatorio
-      const size = Math.random() * 1 + 1.2; // Más grandes
+      const size = Math.random() * 1 + 1.2;
       
       // Duración de animación
-      const duration = Math.random() * 20 + 20; // Más lento
+      const duration = Math.random() * 20 + 20;
       
       letter.style.left = `${startX}px`;
       letter.style.top = `${startY}px`;
       letter.style.fontSize = `${size}rem`;
-      letter.style.opacity = Math.random() * 0.3 + 0.5; // Más visibles (0.5 a 0.8)
+      letter.style.opacity = Math.random() * 0.3 + 0.5;
       letter.style.setProperty('--end-x', `${endX}px`);
       letter.style.setProperty('--end-y', `${endY}px`);
       letter.style.animationDuration = `${duration}s`;
       letter.style.animationDelay = `${Math.random() * 5}s`;
       
       randomLettersContainer.appendChild(letter);
+    }
+
+    // Generar partículas científicas
+    const particleViewer = document.getElementById('particleViewer');
+    const numParticles = 40;
+    
+    for (let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'science-particle';
+      
+      // Posición inicial aleatoria
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      
+      // Movimiento aleatorio
+      const tx = (Math.random() - 0.5) * 500;
+      const ty = (Math.random() - 0.5) * 500;
+      
+      particle.style.left = `${startX}px`;
+      particle.style.top = `${startY}px`;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      
+      particleViewer.appendChild(particle);
     }
 
     // Animación de versos al hacer scroll
