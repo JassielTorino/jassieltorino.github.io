@@ -123,7 +123,7 @@
       z-index: -2;
     }
 
-    /* Cabecera - Ajustada para que no toque la barra de íconos */
+    /* Cabecera - Centrada y superpuesta con la barra de íconos */
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -133,6 +133,7 @@
       padding: 100px 20px;
       text-align: center;
       scroll-margin-top: 100px;
+      margin-top: -60px;
     }
 
     .hero-content {
@@ -147,6 +148,7 @@
       border-radius: 8px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
       overflow: hidden;
+      margin-top: 60px;
     }
 
     /* Textura de granito para el recuadro */
@@ -165,7 +167,7 @@
       border-radius: inherit;
     }
 
-    /* Teclas de máquina de escribir griegas dentro del recuadro */
+    /* Teclas de máquina de escribir griegas dentro del recuadro - Más dispersas */
     .greek-keys {
       position: absolute;
       top: 0;
@@ -191,6 +193,7 @@
       border: 1px solid rgba(0,0,0,0.1);
       opacity: 0.6;
       animation: float-key 15s infinite linear;
+      will-change: transform;
     }
 
     @keyframes float-key {
@@ -226,6 +229,7 @@
       position: relative;
       transition: transform 0.3s ease;
       cursor: default;
+      will-change: transform;
     }
 
     .name-letter:hover {
@@ -261,6 +265,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       margin-bottom: 10px;
       transition: all 0.3s ease;
+      will-change: transform;
     }
 
     .identity-icon:hover .icon-container {
@@ -296,6 +301,7 @@
       box-shadow: 0 0 5px 1px rgba(255,255,255,0.8);
       animation: float-particle 15s infinite linear;
       opacity: 0.8;
+      will-change: transform, opacity;
     }
 
     .magic-particle.black {
@@ -448,6 +454,7 @@
       transition: all 0.8s ease;
       display: block;
       margin-bottom: 1.8rem;
+      will-change: transform, opacity;
     }
 
     .verso.visible {
@@ -473,7 +480,7 @@
       right: -40px;
     }
 
-    /* Sección de Libros - Nueva estructura */
+    /* Sección de Libros - Optimizada para rendimiento */
     .books-container {
       display: flex;
       flex-direction: column;
@@ -481,7 +488,7 @@
       align-items: center;
     }
 
-    /* Contenedor de cada libro */
+    /* Contenedor de cada libro - Optimizado */
     .book-item-wrapper {
       width: 100%;
       padding: 30px;
@@ -492,6 +499,7 @@
       margin-bottom: 10px;
       position: relative;
       overflow: hidden;
+      will-change: transform;
     }
 
     .book-item-wrapper:hover {
@@ -534,7 +542,7 @@
       opacity: 0.7;
     }
 
-    /* Contenedor de imagen del libro */
+    /* Contenedor de imagen del libro - Optimizado */
     .book-image-container {
       position: relative;
       width: 100%;
@@ -566,6 +574,7 @@
       position: relative;
       z-index: 1;
       border: 1px solid rgba(0,0,0,0.1);
+      will-change: transform, filter;
     }
 
     .book-image:hover img {
@@ -574,7 +583,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    /* Galería de imágenes */
+    /* Galería de imágenes - Optimizada */
     .book-gallery {
       display: flex;
       gap: 10px;
@@ -591,6 +600,7 @@
       transition: all 0.3s ease;
       opacity: 0.7;
       object-fit: cover;
+      will-change: transform, opacity;
     }
 
     .thumbnail:hover {
@@ -661,6 +671,7 @@
       z-index: 1;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       margin-top: 10px;
+      will-change: transform;
     }
 
     .buy-button::before {
@@ -938,7 +949,7 @@
       </div>
     </section>
 
-    <!-- Sección de Libros -->
+    <!-- Sección de Libros - Optimizada -->
     <section id="libros">
       <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 20px; position: relative;">
         <span style="position: relative; display: inline-block;">
@@ -953,7 +964,7 @@
       <div class="books-container">
         <!-- Libro 1 -->
         <div class="book-item-wrapper">
-          <!-- Teclas griegas para este libro -->
+          <!-- Teclas griegas para este libro - Más dispersas -->
           <div class="greek-keys" id="greekKeysBook1"></div>
           <div class="book-item">
             <div class="book-image-container">
@@ -987,7 +998,7 @@
 
         <!-- Libro 2 -->
         <div class="book-item-wrapper">
-          <!-- Teclas griegas para este libro -->
+          <!-- Teclas griegas para este libro - Más dispersas -->
           <div class="greek-keys" id="greekKeysBook2"></div>
           <div class="book-item">
             <div class="book-image-container">
@@ -1054,7 +1065,7 @@
     // Generar destellos de letras (reducidos)
     const letterSparksContainer = document.getElementById('letterSparks');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const numSparks = 20; // Reducido de 40 a 20
+    const numSparks = 20;
     
     for (let i = 0; i < numSparks; i++) {
       const spark = document.createElement('div');
@@ -1089,7 +1100,7 @@
 
     // Generar letras flotantes (reducidas)
     const floatingLettersContainer = document.getElementById('floatingLetters');
-    const numFloatingLetters = 60; // Reducido de 120 a 60
+    const numFloatingLetters = 60;
     
     for (let i = 0; i < numFloatingLetters; i++) {
       const letter = document.createElement('div');
@@ -1116,7 +1127,7 @@
       floatingLettersContainer.appendChild(letter);
     }
 
-    // Función para generar teclas griegas
+    // Función para generar teclas griegas - Más dispersas
     function generateGreekKeys(containerId, numKeys) {
       const container = document.getElementById(containerId);
       const greekLetters = 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω';
@@ -1126,16 +1137,16 @@
         key.className = 'greek-key';
         key.textContent = greekLetters.charAt(Math.floor(Math.random() * greekLetters.length));
         
-        // Posición aleatoria dentro del contenedor
-        const posX = Math.random() * 90 + 5; // 5% a 95% para no salirse
-        const posY = Math.random() * 90 + 5; // 5% a 95% para no salirse
+        // Posición aleatoria con más espacio (10% a 90%)
+        const posX = Math.random() * 80 + 10;
+        const posY = Math.random() * 80 + 10;
         
         key.style.left = `${posX}%`;
         key.style.top = `${posY}%`;
         
-        // Movimiento aleatorio
-        const moveX = (Math.random() - 0.5) * 20;
-        const moveY = (Math.random() - 0.5) * 10;
+        // Movimiento más amplio
+        const moveX = (Math.random() - 0.5) * 40;
+        const moveY = (Math.random() - 0.5) * 20;
         
         key.style.setProperty('--move-x', `${moveX}px`);
         key.style.setProperty('--move-y', `${moveY}px`);
@@ -1171,23 +1182,31 @@
       }
     }
 
-    // Cambiar imágenes de los libros
+    // Cambiar imágenes de los libros - Optimizado para evitar vibración
     function changeImage(mainImageId, newSrc, clickedThumbnail) {
       const mainImage = document.getElementById(mainImageId);
       const gallery = clickedThumbnail.parentElement;
       const thumbnails = gallery.querySelectorAll('.thumbnail');
       
-      // Animación de transición
+      // Si ya es la imagen activa, no hacer nada
+      if (clickedThumbnail.classList.contains('active')) return;
+      
+      // Desactivar transiciones durante el cambio para evitar vibración
+      mainImage.style.transition = 'none';
       mainImage.style.opacity = 0;
       
-      setTimeout(() => {
+      // Usar requestAnimationFrame para mejor rendimiento
+      requestAnimationFrame(() => {
         mainImage.src = newSrc;
-        mainImage.style.opacity = 1;
-        
-        // Actualizar thumbnails activos
-        thumbnails.forEach(thumb => thumb.classList.remove('active'));
-        clickedThumbnail.classList.add('active');
-      }, 300);
+        requestAnimationFrame(() => {
+          mainImage.style.transition = 'opacity 0.3s ease';
+          mainImage.style.opacity = 1;
+          
+          // Actualizar thumbnails activos
+          thumbnails.forEach(thumb => thumb.classList.remove('active'));
+          clickedThumbnail.classList.add('active');
+        });
+      });
     }
 
     window.addEventListener('scroll', checkScroll);
